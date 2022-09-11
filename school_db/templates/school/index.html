@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>devCodeCamp Django Querying Lab</title>
+    {% load static %}
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="{% static 'styles.css' %}">
+</head>
+<body>
+    <h1 class="center-text">devCodeCamp Django Querying Lab</h2>
+    <nav>
+        <ul>
+            <li><a href="{% url 'lab:index' %}">Example Solution</a></li>
+            <li><a href="{% url 'lab:one' %}">Problem One</a></li>
+            <li><a href="{% url 'lab:two' %}">Problem Two</a></li>
+            <li><a href="{% url 'lab:three' %}">Problem Three</a></li>
+            <li><a href="{% url 'lab:four' %}">Problem Four</a></li>
+            <li><a href="{% url 'lab:five' %}">Problem Five</a></li>
+            <li><a href="{% url 'lab:six' %}">Problem Six</a></li>
+            <li><a href="{% url 'lab:seven' %}">Problem Seven</a></li>
+            <li><a href="{% url 'lab:bonus' %}">Bonus Problem</a></li>
+        </ul>
+    </nav>
+
+    <div class="flex-container">
+        <div class="card support-doc-links" style="margin: 2em;">
+            <div class="card-body">
+                <h3>Supporting Documentation for {{problem_title}}</h3>
+                {% for suport_doc_link in supporting_documentation %}
+                    <a href={{suport_doc_link}} target="blank">{{suport_doc_link}}</a><br/>
+                {% endfor %}
+            </div>
+        </div>
+        <div class="card terminal-result" style="margin: 2em;">
+            <div class="card-body" style="background-color: #1e1e1e; color: #c6c6c6;">
+                <h3>Expected Terminal Result in VS Code</h3>
+                {% for terminal_line in expected_terminal_results %}
+                    <p style="margin-top: 0px; margin-bottom: 0px;">{{terminal_line}}</p>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+    <div class="flex-container-sql">
+        <div class="card" style="margin: 2em;">
+            <div class="card-body">
+                <h3>Expected Resulting Query (found in "SQL" section in the debug toolbar in the browser)</h3>
+                {% for query_info in expected_resulting_sql %}
+                    <h4 style="margin-top: 1em;">Query Number {{query_info.query_number}}</h4>
+                    <div style="background-color: #dbdbdb; padding: 1em; border-radius: 20px;">
+                        {% for query_line in query_info.query_lines %}
+                            <p>{{query_line}}</p>
+                        {% endfor %}
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>
