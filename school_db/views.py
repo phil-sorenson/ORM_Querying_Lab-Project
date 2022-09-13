@@ -57,8 +57,18 @@ SELECT `school_db_student`.`id`,
 # Find all students who have a GPA greater than 3.0.
 # Order the data by highest GPAs first (descending).
 # Print out each student's full name and gpa to the terminal
+
 def problem_one(request):
-  #❗ This is the fist problem to solve for project! ❗
+    
+    honor_roll_student = Student.objects.filter(gpa__gt=3).order_by('-gpa')
+    
+  
+    for student in honor_roll_student:
+      print(
+        f'Full Name: {student.first_name} {student.last_name}: {student.gpa}')
+
+
+    
     return complete(request)
 
 
