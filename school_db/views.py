@@ -111,7 +111,7 @@ def problem_two(request):
     for instructor in instructors:
       print(f'Full Name: {instructor.first_name} {instructor.last_name}')
       print(f'Hire Date: {instructor.hire_date}')
-      
+      print(" ")
     return complete(request)
 
 
